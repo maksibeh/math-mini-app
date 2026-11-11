@@ -195,11 +195,11 @@ async function solve() {
 buyBtn.onclick = async () => {
   if (!tg) return;
   try {
-    const res = await fetch('/api/invoice', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ initData })
-    });
+    const res = await fetch('https://math-worker.grigorijgrigorij0688.workers.dev', {
+  method: 'POST',
+  headers: { 'Content-Type': 'text/plain' },
+  body: JSON.stringify({ image: exportPng(), initData })
+});
     const data = await res.json();
     if (!data.link) throw new Error('no link');
     tg.openInvoice(data.link, status => {
